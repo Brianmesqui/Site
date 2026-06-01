@@ -1,12 +1,9 @@
-/* ================================================= */
-/* --- 1. CONFIGURAÇÃO BASE E VARIÁVEIS --- */
-/* ================================================= */
-
 :root {
-    --cor-primaria: #00FFFF; /* Ciano Elétrico */
-    --cor-secundaria: #FF00FF; /* Magenta Fúcsia */
+    --cor-primaria: #00FFFF; 
+    --cor-secundaria: #FF00FF; 
     --cor-fundo-escuro: #1a1a1a;
     --cor-texto-claro: #ffffff;
+    --cor-texto-escuro: #333333;
     --sombra-vibrante: 0 0 10px var(--cor-primaria);
 }
 
@@ -23,16 +20,9 @@ body {
     line-height: 1.6;
 }
 
-/* ================================================= */
-/* --- 2. LOGO, HEADER E NAVEGAÇÃO --- */
-/* ================================================= */
-
-.logo-link {
-    text-decoration: none;
-}
-
 .header {
     background-color: rgba(0, 0, 0, 0.9);
+    color: var(--cor-texto-claro);
     padding: 15px 5%;
     display: flex;
     justify-content: space-between;
@@ -40,206 +30,108 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 2px solid var(--cor-secundaria);
+    border-bottom: 2px solid var(--cor-primaria);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
     font-family: 'Bebas Neue', cursive;
-    font-size: 2em;
-    color: var(--cor-primaria);
-    text-shadow: 0 0 10px var(--cor-secundaria);
-    transition: 0.3s;
-}
-
-.logo:hover {
+    font-size: 2.2em;
+    letter-spacing: 3px;
     color: var(--cor-secundaria);
-    text-shadow: 0 0 15px var(--cor-primaria);
+    text-shadow: var(--sombra-vibrante);
 }
 
 .nav a {
     color: var(--cor-texto-claro);
     text-decoration: none;
-    margin-left: 20px;
-    padding: 5px 10px;
-    transition: 0.3s;
-    border-bottom: 2px solid transparent;
+    margin-left: 25px;
+    font-weight: 700;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 .nav a:hover {
-    color: var(--cor-secundaria);
-    border-bottom: 2px solid var(--cor-secundaria);
-    text-shadow: 0 0 5px var(--cor-secundaria);
-}
-
-/* Ícone do Carrinho (Botão) */
-.carrinho {
-    font-size: 1.5em;
-    color: var(--cor-texto-claro);
-    text-decoration: none;
-    position: relative;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 5px; 
-    transition: box-shadow 0.3s ease-in-out; 
-    /* AJUSTE: Adiciona margem à esquerda para separar da navegação em telas maiores */
-    margin-left: 20px;
-}
-
-/* --- NOVO EFEITO NEON PULSANTE APENAS NA BORDA --- */
-
-/* Keyframes para pulsação apenas na sombra (borda) */
-@keyframes neonBorderPulse {
-    0% {
-        box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 25px rgba(0, 255, 255, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-    }
-}
-
-/* 1. Classe aplicada pelo JS quando há produtos */
-.carrinho.pulse-neon {
-    animation: neonBorderPulse 1.5s infinite ease-in-out; 
-}
-
-/* 2. Estilos do ícone (sem animação de pulso) */
-.carrinho .fas.fa-shopping-cart {
-    color: var(--cor-primaria); 
-    text-shadow: var(--sombra-vibrante); 
-    transition: all 0.3s ease-in-out; 
-}
-
-/* Contador de Produtos (Bolha) */
-.contador-carrinho {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: var(--cor-primaria); 
-    color: var(--cor-fundo-escuro);
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.6em;
-    font-weight: 700;
-    line-height: 1;
-    min-width: 18px;
-    text-align: center;
-    border: 1px solid var(--cor-primaria);
-}
-
-/* Garante que o ícone do carrinho mude no hover (sem animação de pulso no hover) */
-.carrinho:hover .fas.fa-shopping-cart {
-    color: var(--cor-secundaria); 
-    text-shadow: 0 0 15px var(--cor-secundaria);
-    animation: none; 
-}
-
-/* ================================================= */
-/* --- NOVO: ÍCONES SOCIAIS NO HEADER (Desktop) --- */
-/* ================================================= */
-
-.header-social {
-    display: flex; /* Alinha os ícones lado a lado */
-    align-items: center;
-    gap: 15px; /* Espaço entre os ícones */
-    margin-left: 20px; /* Espaçamento entre o Carrinho e os Ícones */
-}
-
-.header-social a {
-    color: var(--cor-texto-claro);
-    font-size: 1.5em; 
-    transition: color 0.3s, transform 0.3s;
-    text-decoration: none;
-    /* Estilo Neon */
-    text-shadow: 0 0 8px var(--cor-secundaria);
-}
-
-.header-social a:hover {
     color: var(--cor-primaria);
-    transform: scale(1.1) rotate(5deg);
-    text-shadow: 0 0 12px var(--cor-primaria);
+    text-shadow: var(--sombra-vibrante);
 }
-
-
-/* ================================================= */
-/* --- 3. SEÇÕES PRINCIPAIS E HERO --- */
-/* ================================================= */
 
 .hero {
-    /* ... estilos ... */
-    background-color: #0d0d0d;
-    padding: 100px 5%;
+    background: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
+    color: var(--cor-fundo-escuro);
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    border-bottom: 5px solid var(--cor-primaria);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    padding: 0 5%;
+    animation: pulsar 3s infinite alternate;
 }
 
 .hero h1 {
     font-family: 'Bebas Neue', cursive;
     font-size: 4em;
-    color: var(--cor-primaria);
-    text-shadow: 0 0 15px var(--cor-secundaria);
+    letter-spacing: 5px;
     margin-bottom: 10px;
+    text-shadow: 2px 2px 0 var(--cor-texto-claro);
 }
 
 .hero p {
     font-size: 1.2em;
-    color: var(--cor-texto-claro);
     margin-bottom: 30px;
+    font-weight: 700;
 }
 
 .btn-cta {
-    display: inline-block;
-    background-color: var(--cor-secundaria);
-    color: var(--cor-fundo-escuro);
+    background-color: var(--cor-fundo-escuro);
+    color: var(--cor-primaria);
     text-decoration: none;
-    padding: 12px 30px;
+    padding: 15px 30px;
     border-radius: 5px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: 0.3s;
-    box-shadow: 0 0 10px var(--cor-secundaria);
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid var(--cor-fundo-escuro);
 }
 
 .btn-cta:hover {
-    background-color: var(--cor-primaria);
-    color: var(--cor-fundo-escuro);
-    box-shadow: 0 0 20px var(--cor-primaria);
-    transform: scale(1.05);
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto-claro);
+    border-color: var(--cor-texto-claro);
+    box-shadow: 0 0 15px var(--cor-secundaria);
 }
 
 .vantagens {
+    background-color: var(--cor-fundo-escuro);
+    padding: 40px 5%;
     display: flex;
     justify-content: space-around;
-    padding: 40px 5%;
-    background-color: #111111;
-    border-bottom: 1px solid var(--cor-fundo-escuro);
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .vantagem-item {
-    text-align: center;
-    width: 20%;
-    padding: 10px;
+    max-width: 20%;
 }
 
 .vantagem-item i {
     font-size: 2.5em;
-    color: var(--cor-secundaria);
+    color: var(--cor-primaria);
     margin-bottom: 10px;
-    text-shadow: 0 0 8px var(--cor-secundaria);
+    text-shadow: var(--sombra-vibrante);
 }
 
 .vantagem-item h3 {
     font-size: 1em;
-    letter-spacing: 1px;
-    color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    margin-bottom: 5px;
 }
 
-/* ================================================= */
-/* --- 4. PRODUTOS E CARDS --- */
-/* ================================================= */
+.vantagem-item p {
+    font-size: 0.8em;
+    color: #aaa;
+}
 
 .produtos-destaque {
     padding: 50px 5%;
@@ -249,565 +141,167 @@ body {
 .produtos-destaque h2 {
     font-family: 'Bebas Neue', cursive;
     font-size: 3em;
-    color: var(--cor-secundaria);
-    text-shadow: 0 0 10px var(--cor-secundaria);
     margin-bottom: 40px;
+    color: var(--cor-secundaria);
+    text-shadow: var(--sombra-vibrante);
 }
 
 .grade-produtos {
-    display: grid;
-    /* Ajuste para 15 produtos por página (cerca de 4 colunas em telas grandes) */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 30px;
-    margin-bottom: 30px;
 }
 
 .card-produto {
-    background-color: #222222;
-    border: 1px solid #333;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+    background-color: var(--cor-fundo-escuro);
+    border: 3px solid var(--cor-secundaria);
+    border-radius: 8px;
+    padding: 20px;
+    width: 280px;
+    box-shadow: 0 4px 20px rgba(255, 0, 255, 0.3);
     position: relative;
-    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card-produto:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
     border-color: var(--cor-primaria);
-    box-shadow: 0 0 15px var(--cor-primaria), 0 0 5px var(--cor-secundaria);
-    transform: translateY(-5px);
 }
 
-.imagem-container {
-    height: 200px;
-    margin-bottom: 10px;
-    overflow: hidden;
-    border-radius: 8px;
-    position: relative;
-}
-
-.imagem-container img {
+.card-produto img {
     width: 100%;
-    height: 100%;
+    height: 200px;
+    background-color: #444;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    opacity: 0.8;
     object-fit: cover;
-    /* ALTERAÇÃO: Aumento da duração para uma transição mais suave */
-    transition: opacity 0.5s ease-in-out;
 }
 
-.img-secundaria {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-}
-
-.card-produto:hover .img-secundaria {
-    opacity: 1;
-}
-
-.card-produto:hover .img-principal {
-    opacity: 0;
-}
-
-.card-titulo {
-    font-size: 1.2em;
-    color: var(--cor-secundaria);
-    margin-bottom: 5px;
+.card-produto h3 {
+    color: var(--cor-primaria);
+    font-size: 1.4em;
+    margin-bottom: 10px;
 }
 
 .preco {
-    font-size: 1.3em;
-    font-weight: bold;
-    color: var(--cor-primaria);
-    text-shadow: 0 0 5px var(--cor-primaria);
-    margin-bottom: 5px;
-}
-
-.preco-pix {
-    font-size: 0.9em;
-    color: #00FF00; /* Verde Neon */
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--cor-secundaria);
     margin-bottom: 15px;
+    text-shadow: 1px 1px 0 #000;
 }
 
-.btn-comprar {
+.btn-adicionar {
     background-color: var(--cor-secundaria);
-    color: var(--cor-fundo-escuro);
-    border: none;
+    color: var(--cor-texto-claro);
     padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    transition: 0.3s;
-    box-shadow: 0 0 5px var(--cor-secundaria);
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%; 
 }
 
-.btn-comprar:hover {
+.btn-adicionar:hover {
     background-color: var(--cor-primaria);
-    box-shadow: 0 0 10px var(--cor-primaria);
     transform: scale(1.02);
 }
 
-/* Tags de Venda */
+
 .tag-venda {
     position: absolute;
     top: 10px;
-    right: 10px;
+    left: 10px;
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo-escuro);
     padding: 5px 10px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    border-radius: 5px;
-    z-index: 10;
-    text-shadow: none;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    border-radius: 0 0 5px 0;
 }
 
-.tag-venda.novo, .tag-venda.lancamento {
-    background-color: var(--cor-primaria);
-    color: var(--cor-fundo-escuro);
-}
-
-.tag-venda.oferta, .tag-venda.liquida, .tag-venda.off50, .tag-venda.baixopreco {
+.tag-venda.oferta {
     background-color: var(--cor-secundaria);
     color: var(--cor-fundo-escuro);
-}
-
-/* Paginação */
-.paginacao {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.btn-paginacao {
-    background-color: transparent;
-    border: 1px solid var(--cor-secundaria);
-    color: var(--cor-secundaria);
-    padding: 8px 15px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.btn-paginacao.ativo, .btn-paginacao:hover {
-    background-color: var(--cor-primaria);
-    color: var(--cor-fundo-escuro);
-    box-shadow: 0 0 10px var(--cor-primaria);
-}
-
-/* ================================================= */
-/* --- 5. SIDEBAR DO CARRINHO --- */
-/* ================================================= */
-
-.carrinho-sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 350px;
-    height: 100%;
-    background-color: #0d0d0d;
-    border-left: 3px solid var(--cor-secundaria);
-    box-shadow: -5px 0 30px rgba(255, 0, 255, 0.5);
-    transform: translateX(100%);
-    transition: transform 0.4s ease-in-out;
-    z-index: 1500;
-    display: flex;
-    flex-direction: column;
-}
-
-.carrinho-sidebar.aberto {
-    transform: translateX(0);
-}
-
-.sidebar-header {
-    padding: 20px;
-    border-bottom: 1px solid #333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.sidebar-header h3 {
-    color: var(--cor-primaria);
-    text-shadow: 0 0 8px var(--cor-primaria);
-}
-
-.btn-fechar {
-    background: none;
-    border: none;
-    color: var(--cor-secundaria);
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-fechar:hover {
-    color: #FF0000;
-}
-
-.carrinho-itens {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 20px;
-}
-
-.carrinho-vazio {
-    text-align: center;
-    padding-top: 50px;
-    color: #777;
-    font-style: italic;
-}
-
-.carrinho-item {
-    display: flex;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px dashed #333;
-}
-
-.item-imagem {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-right: 15px;
-    border: 1px solid var(--cor-secundaria);
-}
-
-.item-info {
-    flex-grow: 1;
-}
-
-.item-info h4 {
-    font-size: 0.9em;
-    color: var(--cor-texto-claro);
-    margin-bottom: 5px;
-}
-
-.item-preco-unitario {
-    font-size: 0.8em;
-    color: var(--cor-primaria);
-    margin-bottom: 8px;
-}
-
-.quantidade-control {
-    display: flex;
-    align-items: center;
-    font-size: 0.9em;
-}
-
-.btn-quantidade {
-    background: var(--cor-secundaria);
-    color: var(--cor-fundo-escuro);
-    border: none;
-    padding: 2px 8px;
-    cursor: pointer;
-    border-radius: 3px;
-    margin: 0 5px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn-quantidade:hover {
-    background: var(--cor-primaria);
-    box-shadow: 0 0 5px var(--cor-primaria);
-}
-
-.item-quantidade {
-    min-width: 20px;
-    text-align: center;
-}
-
-.btn-remover-item {
-    background: none;
-    border: none;
-    color: #ff3366; /* Vermelho Neon */
-    cursor: pointer;
-    margin-left: 10px;
-    font-size: 1.1em;
-    transition: 0.3s;
-}
-
-.btn-remover-item:hover {
-    color: var(--cor-primaria);
-    transform: scale(1.2);
-}
-
-.sidebar-footer {
-    padding: 20px;
-    border-top: 2px solid var(--cor-primaria);
-    background-color: #080808;
-}
-
-.total-area {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--cor-secundaria);
-    text-shadow: 0 0 5px var(--cor-secundaria);
-}
-
-.btn-finalizar {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: var(--cor-secundaria);
-    color: var(--cor-fundo-escuro);
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
+    transform: rotate(-5deg);
     box-shadow: 0 0 10px var(--cor-secundaria);
 }
 
-.btn-finalizar:disabled {
-    background-color: #555;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-.btn-finalizar:not(:disabled):hover {
-    background-color: var(--cor-primaria);
-    box-shadow: 0 0 15px var(--cor-primaria);
-}
-
-/* ================================================= */
-/* --- 6. CHECKOUT --- */
-/* ================================================= */
-
-.checkout-container {
-    padding: 60px 5%;
-    background-color: #0f0f0f;
-}
-
-.checkout-container h2 {
-    font-family: 'Bebas Neue', cursive;
-    font-size: 2.5em;
-    color: var(--cor-primaria);
-    text-shadow: 0 0 8px var(--cor-primaria);
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.checkout-passos {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-}
-
-.passo {
-    flex: 1;
-    background-color: #222222;
-    padding: 25px;
-    border-radius: 10px;
-    border: 1px solid #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.passo h3 {
-    color: var(--cor-secundaria);
-    border-bottom: 1px dashed #555;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.form-passo input, .btn-passo {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #1a1a1a;
-    color: var(--cor-texto-claro);
-    transition: 0.3s;
-}
-
-.form-passo input:focus {
-    border-color: var(--cor-primaria);
-    box-shadow: 0 0 5px var(--cor-primaria);
-    outline: none;
-}
-
-.btn-passo {
-    background-color: var(--cor-primaria);
-    color: var(--cor-fundo-escuro);
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 5px var(--cor-primaria);
-}
-
-.btn-passo:hover {
-    background-color: var(--cor-secundaria);
-    box-shadow: 0 0 10px var(--cor-secundaria);
-}
-
-.opcoes-pagamento label {
-    display: block;
-    padding: 10px;
-    border: 1px solid #444;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.opcoes-pagamento label:hover {
-    border-color: var(--cor-secundaria);
-}
-
-.opcoes-pagamento input[type="radio"]:checked + i {
-    color: var(--cor-primaria);
-    text-shadow: 0 0 5px var(--cor-primaria);
-}
-
-.resumo-checkout {
-    max-height: 200px;
-    overflow-y: auto;
-    padding-right: 10px;
-    margin-bottom: 15px;
-}
-
-.resumo-item {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9em;
-    padding: 5px 0;
-    border-bottom: 1px dotted #444;
-}
-
-.resumo-total {
-    font-weight: bold;
-    font-size: 1.1em;
-    padding: 10px 0;
-    border-top: 2px solid var(--cor-secundaria);
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.total-desconto-pix {
-    margin-top: 20px;
-    padding: 15px;
-    border: 2px solid #00FF00;
-    border-radius: 5px;
-    background-color: rgba(0, 255, 0, 0.1);
-    color: var(--cor-texto-claro);
-}
-
-.total-desconto-pix p {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-.total-desconto-pix .valor-final {
-    font-size: 1.3em;
-    font-weight: bold;
-    color: var(--cor-primaria);
-    text-shadow: 0 0 8px var(--cor-primaria);
-}
-
-.btn-final-pedido {
-    margin-top: 20px;
-    background-color: var(--cor-secundaria);
-    box-shadow: 0 0 15px var(--cor-secundaria);
-}
-
-.btn-final-pedido:hover {
-    background-color: var(--cor-primaria);
-    box-shadow: 0 0 20px var(--cor-primaria);
-}
-
-.aviso-backend {
-    font-size: 0.8em;
-    color: #FF6666;
-    margin-top: 10px;
-    text-align: center;
-}
-
-/* ================================================= */
-/* --- 7. FOOTER --- */
-/* ================================================= */
 
 .footer {
-    background-color: #000000;
-    padding: 20px 5%;
+    background-color: #000;
+    color: var(--cor-primaria);
     text-align: center;
-    border-top: 2px solid var(--cor-primaria);
+    padding: 20px 0;
+    border-top: 2px solid var(--cor-secundaria);
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 2px;
 }
 
-.footer p {
-    font-size: 0.9em;
-    color: #888;
-    margin-bottom: 0; /* Ajustado, pois os ícones foram removidos */
-}
 
-/* Os estilos .social-icons foram movidos para .header-social. */
-
-
-/* ================================================= */
-/* --- 10. RESPONSIVIDADE --- */
-/* ================================================= */
-@media (max-width: 992px) {
-    .checkout-passos {
-        flex-direction: column;
+@keyframes pulsar {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
     }
-    .passo {
-        margin-bottom: 20px;
+    100% {
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
     }
 }
+
+
 @media (max-width: 768px) {
+    
 
     .hero h1 {
-        font-size: 2.5em;
+        font-size: 2.5em; 
     }
-
+     
+  
     .header {
-        flex-wrap: wrap;
+        flex-wrap: wrap; 
         justify-content: center;
         text-align: center;
         padding-bottom: 10px;
     }
-
+    
     .nav {
         margin-top: 10px;
         width: 100%;
         justify-content: space-around;
         display: flex;
     }
+    
+    .nav a {
+        margin: 0 5px;
+        font-size: 0.9em;
+    }
 
     .carrinho {
         position: absolute;
         top: 20px;
         right: 5%;
-        /* Ajuste: remove a margem extra do desktop */
-        margin-left: 0;
-    }
-    
-    /* NOVO: Centraliza os ícones sociais no header mobile, abaixo da navegação */
-    .header-social {
-        width: 100%;
-        justify-content: center; /* Centraliza os ícones */
-        margin-top: 15px; 
-        padding-top: 10px;
-        border-top: 1px dashed #333; /* Linha divisória sutil */
-        margin-left: 0;
     }
 
+    
     .vantagens {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; 
     }
+
     .vantagem-item {
-        width: 80%;
-        margin-bottom: 20px;
+        max-width: 80%;
+        margin: 15px 0;
     }
+
+  
     .grade-produtos {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .card-produto {
+        width: 90%; 
+        max-width: 350px;
     }
 }
