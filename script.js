@@ -42,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
     atualizarProduto(18, "Meia Estampa Psicodélica", 29.90, "BAIXO PREÇO");
     atualizarProduto(40, "Boné Holográfico (LIQUIDAÇÃO)", 79.90, "LIQUIDA");
     atualizarProduto(3, "Jaqueta Bobojaco (LIQUIDAÇÃO)", 239.90, "LANÇAMENTO");
+    atualizarProduto(4, "Habibi Indiano (LIQUIDAÇÃO)", 1.99, "LANÇAMENTO");
+    atualizarProduto(5, "Luis Coach da XFIT (LIQUIDAÇÃO)", 0.01, "BAIXOU PREÇO");
+
 
     // --- 2. GESTÃO DE ESTADO DO CARRINHO ---
     let carrinhoItens = [];
