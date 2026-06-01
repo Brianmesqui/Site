@@ -1,6 +1,7 @@
+/* --- Cores e Fontes --- */
 :root {
-    --cor-primaria: #00FFFF; 
-    --cor-secundaria: #FF00FF; 
+    --cor-primaria: #00FFFF; /* Ciano Elétrico */
+    --cor-secundaria: #FF00FF; /* Magenta Fúcsia */
     --cor-fundo-escuro: #1a1a1a;
     --cor-texto-claro: #ffffff;
     --cor-texto-escuro: #333333;
@@ -20,6 +21,7 @@ body {
     line-height: 1.6;
 }
 
+/* --- Cabeçalho e Navegação --- */
 .header {
     background-color: rgba(0, 0, 0, 0.9);
     color: var(--cor-texto-claro);
@@ -55,6 +57,7 @@ body {
     text-shadow: var(--sombra-vibrante);
 }
 
+/* --- Seção de Destaque (Hero) --- */
 .hero {
     background: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
     color: var(--cor-fundo-escuro);
@@ -82,6 +85,7 @@ body {
     font-weight: 700;
 }
 
+/* Botão de Chamada para Ação */
 .btn-cta {
     background-color: var(--cor-fundo-escuro);
     color: var(--cor-primaria);
@@ -101,6 +105,7 @@ body {
     box-shadow: 0 0 15px var(--cor-secundaria);
 }
 
+/* --- NOVA SEÇÃO: Vantagens/Ícones --- */
 .vantagens {
     background-color: var(--cor-fundo-escuro);
     padding: 40px 5%;
@@ -132,7 +137,9 @@ body {
     font-size: 0.8em;
     color: #aaa;
 }
+/* ------------------------------------- */
 
+/* --- Área de Produtos --- */
 .produtos-destaque {
     padding: 50px 5%;
     text-align: center;
@@ -177,7 +184,7 @@ body {
     margin-bottom: 15px;
     border-radius: 5px;
     opacity: 0.8;
-    object-fit: cover;
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
 }
 
 .card-produto h3 {
@@ -203,7 +210,7 @@ body {
     cursor: pointer;
     font-weight: 700;
     transition: background-color 0.3s, transform 0.1s;
-    width: 100%; 
+    width: 100%; /* Ocupa toda a largura do card */
 }
 
 .btn-adicionar:hover {
@@ -211,7 +218,7 @@ body {
     transform: scale(1.02);
 }
 
-
+/* Tags de Venda */
 .tag-venda {
     position: absolute;
     top: 10px;
@@ -230,7 +237,7 @@ body {
     box-shadow: 0 0 10px var(--cor-secundaria);
 }
 
-
+/* --- Rodapé --- */
 .footer {
     background-color: #000;
     color: var(--cor-primaria);
@@ -241,7 +248,7 @@ body {
     letter-spacing: 2px;
 }
 
-
+/* --- Animação (Para o efeito VIBRANTE) --- */
 @keyframes pulsar {
     0% {
         box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
@@ -251,17 +258,19 @@ body {
     }
 }
 
-
+/* ================================================= */
+/* --- RESPONSIVIDADE (Para Telas Pequenas/Celulares) --- */
+/* ================================================= */
 @media (max-width: 768px) {
     
-
+    /* Hero e Títulos */
     .hero h1 {
-        font-size: 2.5em; 
+        font-size: 2.5em; /* Reduz o tamanho do título principal */
     }
-     
-  
+    
+    /* Navegação */
     .header {
-        flex-wrap: wrap; 
+        flex-wrap: wrap; /* Permite que os itens quebrem a linha */
         justify-content: center;
         text-align: center;
         padding-bottom: 10px;
@@ -285,9 +294,9 @@ body {
         right: 5%;
     }
 
-    
+    /* Vantagens */
     .vantagens {
-        flex-direction: column; 
+        flex-direction: column; /* Coloca os itens um abaixo do outro */
     }
 
     .vantagem-item {
@@ -295,13 +304,13 @@ body {
         margin: 15px 0;
     }
 
-  
+    /* Produtos */
     .grade-produtos {
         gap: 20px;
     }
 
     .card-produto {
-        width: 90%; 
+        width: 90%; /* Ocupa quase a largura total do celular */
         max-width: 350px;
     }
 }
