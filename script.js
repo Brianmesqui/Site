@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     atualizarProduto(5, "Tênis LED Max Vibração", 349.90, "LANÇAMENTO");
     atualizarProduto(18, "Meia Estampa Psicodélica", 29.90, "BAIXO PREÇO");
     atualizarProduto(40, "Boné Holográfico (LIQUIDAÇÃO)", 79.90, "LIQUIDA");
+    atualizarProduto(3, "Jaqueta Bobojaco (LIQUIDAÇÃO)", 239.90, "LANÇAMENTO");
 
     // --- 2. GESTÃO DE ESTADO DO CARRINHO ---
     let carrinhoItens = [];
