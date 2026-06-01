@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         preco: parseFloat((59.90 + i * 5).toFixed(2)), 
         tag: i < 5 ? 'NOVO' : (i < 10 ? 'OFERTA' : ''),
         alt: `Imagem do Produto Vibe #${i + 1}`,
-        imagemUrl: `imagens/produto_${i + 1}.jpg` 
+        imagemUrl: `produto_${i + 1}.jpg` 
     }));
 
     // Personalização de produtos
