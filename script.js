@@ -1,18 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. DADOS E CONFIGURAÇÃO DA LOJA ---
     const totalProdutos = 50;
     const itensPorPagina = 12;
     let paginaAtual = 1;
-
-    // Desconto de 5% para PIX
     const DESCONTO_PIX = 0.05; 
-
-    // Cores (puxadas do CSS)
     const corSecundaria = '#FF00FF'; 
     const corPrimaria = '#00FFFF'; 
 
-    // Lista de 50 produtos simulados
     const listaProdutos = Array.from({ length: totalProdutos }, (_, i) => ({
         id: i + 1,
         nome: `Produto Vibe ${i + 1}`,
@@ -22,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         imagemUrl: `imagens/produto_${i + 1}.jpg` 
     }));
 
-    // Personalização de produtos
     function atualizarProduto(id, nome, preco, tag) {
         const indice = id - 1; 
         if (listaProdutos[indice]) {
@@ -32,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // [CORREÇÃO CRÍTICA]: Trocado "50% OFF" por "OFF 50%" para gerar a classe válida ".off50"
     atualizarProduto(1, "Camiseta Polo Nike - Últimas Unidades!", 199.00, "🔥 OFF 10%");
     atualizarProduto(2, "Tênis LED NIKE EDIÇÃO", 349.90, "OFERTA");
     atualizarProduto(18, "Meia Estampa Psicodélica", 29.90, "BAIXO PREÇO");
@@ -42,39 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
     atualizarProduto(18, "Meia Estampa Psicodélica", 29.90, "BAIXO PREÇO");
     atualizarProduto(40, "Boné Holográfico (LIQUIDAÇÃO)", 79.90, "LIQUIDA");
 
-    // --- 2. GESTÃO DE ESTADO DO CARRINHO ---
     let carrinhoItens = [];
 
-    // --- 3. ELEMENTOS E CONSTANTES DO DOM ---
-    // .carrinho é o elemento principal do header onde a pulsação de borda deve ocorrer
     const elementoCarrinhoHeader = document.querySelector('.carrinho'); 
     const sidebar = document.getElementById('carrinho-sidebar');
     const btnFechar = document.getElementById('fechar-carrinho');
     const contadorCarrinhoHeader = document.querySelector('.contador-carrinho');
     const containerItensCarrinho = document.getElementById('carrinho-itens');
     const elementoTotalCarrinho = document.getElementById('carrinho-total');
-
-    // Elementos do Checkout
     const btnAbrirCheckout = document.getElementById('abrir-checkout');
     const checkoutSection = document.getElementById('checkout-section');
     const cepInput = document.getElementById('cep');
     const resumoCheckoutContainer = document.getElementById('resumo-checkout');
     const descontoPixInfo = document.getElementById('desconto-pix-info');
 
-    // --- 4. FUNÇÕES DE UTILIDADE ---
-
     function getProdutoPorId(id) {
         const produtoId = parseInt(id);
         return listaProdutos.find(p => p.id === produtoId);
     }
 
-    // --- 5. LÓGICA DO CARRINHO (Adicionar, Remover, Alterar) ---
-
     function adicionarAoCarrinho(botao) {
         const produtoId = botao.dataset.id;
         const produtoExistente = carrinhoItens.find(item => item.id === parseInt(produtoId));
-
-        // Verifica se é a primeira adição
         const carrinhoVazioAntes = carrinhoItens.length === 0;
 
         if (produtoExistente) {
@@ -83,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const produto = getProdutoPorId(produtoId);
             if (produto) {
                 carrinhoItens.push({
-                    id: produto.id,
+                    id: product.id,
                     nome: produto.nome,
                     preco: produto.preco,
                     imagemUrl: produto.imagemUrl,
@@ -92,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Efeito Visual de Confirmação (feedback imediato no botão)
         botao.disabled = true;
         const textoOriginal = botao.textContent;
         const corFundoOriginal = botao.style.backgroundColor || corSecundaria;
@@ -113,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         atualizarCarrinho();
 
-        // **Abre a sidebar automaticamente na primeira adição**
         if (carrinhoVazioAntes) {
              sidebar.classList.add('aberto');
              renderizarCarrinhoItens();
@@ -140,8 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
         carrinhoItens = carrinhoItens.filter(item => item.id !== id);
         atualizarCarrinho();
     }
-
-    // --- 6. FUNÇÕES DE RENDERIZAÇÃO E ATUALIZAÇÃO ---
 
     function calcularTotalBruto() {
         return carrinhoItens.reduce((total, item) => total + (item.preco * item.quantidade), 0);
@@ -190,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
         contadorCarrinhoHeader.textContent = contagemCarrinho;
         contadorCarrinhoHeader.style.display = contagemCarrinho > 0 ? 'block' : 'none';
         
-        // NOVO: Aplica o brilho pulsante neon na BORDA do carrinho se houver produtos.
         if (contagemCarrinho > 0) {
             elementoCarrinhoHeader.classList.add('pulse-neon');
         } else {
@@ -255,8 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
         calcularDescontoEImprimir();
     }
 
-    // --- 7. GESTÃO DE FLUXO E CHECKOUT ---
-
     btnAbrirCheckout.addEventListener('click', () => {
         if (carrinhoItens.length === 0) return;
 
@@ -309,8 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('top').scrollIntoView({ behavior: 'smooth' });
     });
 
-
-    // --- 8. GESTÃO DE PAGINAÇÃO E LINKS DIRETOS ---
     const containerProdutos = document.getElementById('produtos-container');
     const containerPaginacao = document.getElementById('paginacao');
     const totalPaginas = Math.ceil(totalProdutos / itensPorPagina);
@@ -323,24 +295,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const produtosDaPagina = listaProdutos.slice(inicio, fim);
 
         let produtoParaRolar = null;
-
         const cartoesHTML = [];
 
         produtosDaPagina.forEach(produto => {
             const precoOriginal = produto.preco;
             const precoPix = precoOriginal * (1 - DESCONTO_PIX);
-
-            // Esta lógica gera a classe baseada na tag, agora segura para "OFF 50%"
             const tagClass = produto.tag.toLowerCase().replace(/[^a-z0-9]/g, ''); 
             const tagHTML = produto.tag ? `<div class="tag-venda ${tagClass}">${produto.tag}</div>` : '';
 
-            // Classe do botão: btn-comprar
             const cardHTML = `
                 <div class="card-produto" id="produto-${produto.id}">
                     ${tagHTML}
                     <div class="imagem-container">
                         <img src="${produto.imagemUrl}" alt="${produto.alt}" class="img-principal">
-
                         <img src="imagens/produto_${produto.id}_hover.jpg" alt="${produto.alt} - Hover" class="img-secundaria">
                     </div>
                     <h3>${produto.nome}</h3>
@@ -357,15 +324,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Insere todos os cartões de uma vez
         containerProdutos.innerHTML = cartoesHTML.join('');
 
-        // CORREÇÃO CRÍTICA: Anexar o listener AGORA, após os botões existirem no DOM.
         document.querySelectorAll('.btn-comprar').forEach(botao => {
             botao.addEventListener('click', (e) => adicionarAoCarrinho(e.currentTarget));
         });
 
-        // Lógica de rolagem...
         if (produtoParaRolar) {
             setTimeout(() => {
                 const elemento = document.getElementById(produtoParaRolar);
@@ -388,7 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
         renderizarBotoesPaginacao();
     }
 
-    // Variável para armazenar o ID do produto se for um link direto
     let produtoAcessadoDiretamente = null;
 
     function checarLinkDireto() {
@@ -396,7 +359,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (hash.startsWith('#produto-')) {
             const produtoId = parseInt(hash.replace('#produto-', ''));
             if (produtoId > 0 && produtoId <= totalProdutos) {
-
                 const indiceProduto = produtoId - 1;
                 const paginaDestino = Math.ceil((indiceProduto + 1) / itensPorPagina);
 
@@ -430,7 +392,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 9. INICIALIZAÇÃO ---
     if (!checarLinkDireto()) {
         paginaAtual = 1;
     }
@@ -438,9 +399,8 @@ document.addEventListener('DOMContentLoaded', () => {
     renderizarProdutos();
     atualizarCarrinho();
 
-    // Gestão da Sidebar (Abrir/Fechar)
     elementoCarrinhoHeader.addEventListener('click', (e) => {
-        e.preventDefault(); // Evita que o link # no href atualize a página
+        e.preventDefault(); 
         e.stopPropagation();
         sidebar.classList.add('aberto');
         renderizarCarrinhoItens();
@@ -452,7 +412,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (event) => {
         const isClickInsideSidebar = sidebar.contains(event.target);
-        // Garante que clicar no ícone do carrinho ou no contador não feche
         const isClickOnCartIcon = elementoCarrinhoHeader.contains(event.target) || contadorCarrinhoHeader.contains(event.target);
 
         if (sidebar.classList.contains('aberto') && !isClickInsideSidebar && !isClickOnCartIcon) {
