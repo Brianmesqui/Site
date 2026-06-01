@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="imagem-container">
                         <img src="${produto.imagemUrl}" alt="${produto.alt}" class="img-principal">
 
-                        <img src="imagens/produto_${produto.id}_hover.jpg" alt="${produto.alt} - Hover" class="img-secundaria">
+                        <img src="produto_${produto.id}_hover.jpg" alt="${produto.alt} - Hover" class="img-secundaria">
                     </div>
                     <h3>${produto.nome}</h3>
                     <p class="preco">R$ ${precoOriginal.toFixed(2).replace('.', ',')}</p>
