@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrance Store - Sua Loja Descolada</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+<body id="top"> 
+
+    <header class="header">
+        <a href="#top" class="logo-link">
+            <div class="logo">Vibrance Store</div>
+        </a>
+        <nav class="nav">
+            <a href="#produtos">Produtos</a>
+            <a href="#novidades">Novidades</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        
+        <a href="#" class="carrinho" aria-label="Abrir carrinho de compras">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="contador-carrinho" style="display: none;">0</span>
+        </a>
+        
+        <div class="social-icons header-social">
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>CORES, ENERGIA & ESTILO</h1>
+            <p>Descubra as novidades mais quentes e vibrantes da estação!</p>
+            <a href="#produtos" class="btn-cta">COMPRE AGORA</a>
+        </section>
+        
+        <section class="vantagens">
+            <div class="vantagem-item">
+                <i class="fas fa-truck-fast"></i>
+                <h3>FRETE RÁPIDO</h3>
+                <p>Receba em até 3 dias úteis!</p>
+            </div>
+            <div class="vantagem-item">
+                <i class="fas fa-magic"></i>
+                <h3>TROCA FÁCIL</h3>
+                <p>Se não brilhar, trocamos!</p>
+            </div>
+            <div class="vantagem-item">
+                <i class="fas fa-bolt"></i>
+                <h3>FLASH SALE</h3>
+                <p>Ofertas relâmpago diárias.</p>
+            </div>
+            <div class="vantagem-item">
+                <i class="fas fa-wallet"></i>
+                <h3>PAGAMENTO</h3>
+                <p>Até 10x sem juros.</p>
+            </div>
+        </section>
+
+        <section id="produtos" class="produtos-destaque">
+            <h2>NOSSOS DESTAQUES 🔥</h2>
+            <div id="produtos-container" class="grade-produtos">
+                
+                </div>
+            <div id="paginacao" class="paginacao">
+            </div>
+        </section>
+        <section id="checkout-section" class="checkout-container oculto">
+            <h2>FINALIZAR PEDIDO</h2>
+                        
+            <div class="checkout-passos">
+                
+                <div class="passo passo-login">
+                    <h3>1. Login ou Cadastro</h3>
+                    <p class="aviso-backend">⚠️ **Simulação:** A criação de contas exige Back-end (servidor e banco de dados).</p>
+                    <form id="form-login" class="form-passo">
+                        <input type="email" placeholder="E-mail" required>
+                        <input type="password" placeholder="Senha" required>
+                        <button type="submit" class="btn-passo">Entrar / Continuar como Novo Usuário</button>
+                    </form>
+                </div>
+
+                <div class="passo passo-entrega">
+                    <h3>2. Entrega e Endereço</h3>
+                    <form id="form-endereco" class="form-passo">
+                        <input type="text" id="cep" placeholder="CEP (Apenas números)" maxlength="8" required>
+                        <input type="text" id="rua" placeholder="Rua / Avenida" readonly required>
+                        <input type="text" id="bairro" placeholder="Bairro" readonly required>
+                        <input type="text" id="cidade" placeholder="Cidade" readonly required>
+                        <input type="text" id="numero" placeholder="Número" required>
+                        <input type="text" placeholder="Complemento (opcional)">
+                    </form>
+                </div>
+
+                <div class="passo passo-pagamento">
+                    <h3>3. Pagamento e Resumo</h3>
+                    
+                    <div id="resumo-checkout" class="resumo-checkout">
+                        </div>
+
+                    <h4>Escolha a Forma de Pagamento</h4>
+                    <div class="opcoes-pagamento">
+                        <label>
+                            <input type="radio" name="pagamento" value="pix" checked>
+                            <i class="fas fa-qrcode"></i> PIX (**5% de Desconto!** Aprovação Imediata)
+                        </label>
+                        <label>
+                            <input type="radio" name="pagamento" value="cartao">
+                            <i class="fas fa-credit-card"></i> Cartão de Crédito
+                        </label>
+                        <label>
+                            <input type="radio" name="pagamento" value="boleto">
+                            <i class="fas fa-barcode"></i> Boleto Bancário
+                        </label>
+                    </div>
+                    
+                    <div id="desconto-pix-info" class="total-desconto-pix">
+                        </div>
+                    
+                    <button id="finalizar-pedido" class="btn-passo btn-final-pedido">CONFIRMAR E PAGAR</button>
+                    <p class="aviso-backend">⚠️ O processamento do pagamento exige integração com um Gateway (ex: Mercado Pago).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <div id="carrinho-sidebar" class="carrinho-sidebar">
+        <div class="sidebar-header">
+            <h3>Seu Carrinho (<i class="fas fa-shopping-cart"></i> <span id="carrinho-contador-sidebar" class="contador-carrinho">0</span>)</h3>
+            <button id="fechar-carrinho" class="btn-fechar">X</button>
+        </div>
+        <div id="carrinho-itens" class="carrinho-itens">
+            </div>
+        <div class="sidebar-footer">
+            <div class="total-area">
+                <span>Total Bruto:</span>
+                <span id="carrinho-total">R$ 0,00</span>
+            </div>
+            <button id="abrir-checkout" class="btn-finalizar">FINALIZAR COMPRA</button>
+        </div>
+    </div>
+    
+    <footer id="contato" class="footer">
+        <p>&copy; 2025 Vibrance Store. Desenvolvido com muito Estilo!</p>
+        </footer>
+
+    <script src="script.js"></script> 
+</body>
+</html>
