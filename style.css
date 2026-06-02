@@ -811,3 +811,23 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
+
+/* ==========================================================================
+   AJUSTE E ALINHAMENTO DAS IMAGENS DOS PRODUTOS
+   ========================================================================== */
+
+.imagem-container {
+    width: 100%;
+    height: 350px;           /* Define uma altura fixa idêntica para todos os blocos */
+    overflow: hidden;        /* Corta qualquer sobra da imagem para não quebrar o layout */
+    position: relative;
+    border-radius: 12px;     /* Deixa os cantos da imagem levemente arredondados */
+}
+
+.imagem-container img {
+    width: 100%;
+    height: 100%;            /* Força a imagem a preencher todo o tamanho do container acima */
+    object-fit: cover;       /* Ajusta e corta a foto proporcionalmente, sem distorcer ou amassar */
+    object-position: center; /* Garante que o foco do corte seja sempre o centro da foto */
+    display: block;
+    transition: transform 0.3s ease; /* Deixa a troca ou efeito visual mais suave */
