@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     atualizarProduto(3, "Jaqueta Bobojaco (LIQUIDAÇÃO)", 239.90, "LANÇAMENTO");
     atualizarProduto(4, "Habibi Indiano (LIQUIDAÇÃO)", 1.99, "LANÇAMENTO");
     atualizarProduto(5, "Luis Coach da XFIT (LIQUIDAÇÃO)", 0.01, "BAIXOU PREÇO");
+    atualizarProduto(1, "Camiseta Polo Nike - Últimas Unidades!", 199.00, "🔥 OFF 10%");
 
 
     // --- 2. GESTÃO DE ESTADO DO CARRINHO ---
